@@ -52,4 +52,29 @@
             </plugin>
         </plugins>
     </build>
+
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>wendy512@yeah.net</name>
+            <url>https://github.com/wendy512</url>
+            <timezone>+8</timezone>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <scm>
+        <url>https://github.com/wendy512/stream-samples</url>
+        <connection>scm:git:git@github.com:wendy512/stream-samples.git</connection>
+        <developerConnection>scm:git:git@github.com:wendy512/stream-samples.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
 </project>
