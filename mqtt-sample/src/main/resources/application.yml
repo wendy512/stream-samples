@@ -1,13 +1,13 @@
 stream:
   # 数据通道
   channel:
-    # 接受通道名称
+    # 接受通道
     sourceQueue:
       # 通道类型，目前支持：memory
       type: memory
       # 队列容量
       capacity: 20000
-    # 发送通道名称
+    # 发送通道
     sinkQueue:
       type: memory
       # 队列容量
@@ -15,24 +15,16 @@ stream:
   # 消息源配置
   source:
     test:
-      # 消息源类型，目前支持：local、mqtt、kafka、rabbitmq
+      # 消息源类型，目前支持：local、mqtt、kafka、rabbitmq、redis、pulsar
       type: mqtt
       # 关联通道
       channel: sourceQueue
-      # 配置MQTT
+      # 指定实例名称
+      instanceName: mqtt-client-1
       config:
-        host: tcp://127.0.0.1:1883
-        topic: test/stream
-        qos: 1
-        username: admin
-        password: public
+        topic: test/stream-1
         # 为空默认为UUID生成
-        clientId: clientId
-        autoReconnect: true
-        cleanSession: true
-        keepAlive: 60
-        connectionTimeout: 30
-        timeToWait: 60000
+        clientId: test1
     # 接受本地通道的数据，然后发送到MQTT Server
     test2:
       type: local
@@ -41,7 +33,7 @@ stream:
   sink:
     # 接受处理
     test:
-      # 消息目标类型，目前支持：default、mqtt、kafka、rabbitmq
+      # 消息目标类型，目前支持：local、mqtt、kafka、rabbitmq、redis、pulsar
       type: default
       # 关联通道
       channel: sourceQueue
@@ -52,16 +44,31 @@ stream:
       type: mqtt
       channel: sinkQueue
       threads: 1
-      # 配置MQTT
+      # 指定实例名称
+      instanceName: mqtt-client-1
       config:
-        host: tcp://127.0.0.1:1883
-        qos: 1
-        username: admin
-        password: public
         # 为空默认为UUID生成
-        clientId: clientId
-        autoReconnect: true
-        cleanSession: true
-        keepAlive: 60
-        connectionTimeout: 30
-        timeToWait: 60000
+        clientId: test2
+  # 实例配置
+  instance:
+    mqtt-client-1:
+      host: tcp://192.168.6.195:9883
+      qos: 1
+      username: admin
+      password: hy123456
+      autoReconnect: true
+      cleanSession: true
+      keepAlive: 60
+      connectionTimeout: 30
+      timeToWait: 60000
+      # ssl配置
+      #ssl:
+        #enabled: false
+        # 密钥路径，支持classpath:
+        #keyStore: /path/key.jks
+        # 密钥类型
+        #keyStoreType: JKS
+        # 密钥密码
+        #keyStorePassword: password
+
+

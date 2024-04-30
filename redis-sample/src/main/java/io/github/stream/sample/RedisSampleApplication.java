@@ -13,26 +13,19 @@
 
 package io.github.stream.sample;
 
-import java.util.List;
-
-import org.springframework.stereotype.Component;
-
-import io.github.stream.core.Consumer;
-import io.github.stream.core.Message;
-import io.github.stream.core.annotation.Sink;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * 测试Consumer
- * @author wendy512@yeah.net
- * @date 2023-05-26 21:13:05
+ * SpringBoot 启动类
+ * 
+ * @author taowenwu
+ * @date 2023-05-26 21:08:42
  * @since 1.0.0
  */
-@Component
-@Sink("test")
-public class SampleConsumer implements Consumer<byte[]> {
-    
-    @Override
-    public void accept(List<Message<byte[]>> messages) {
-        messages.forEach(m -> System.out.println("Received rabbitmq message is " + new String(m.getPayload())));
+@SpringBootApplication(scanBasePackages = "io.github.stream")
+public class RedisSampleApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(RedisSampleApplication.class, args);
     }
 }

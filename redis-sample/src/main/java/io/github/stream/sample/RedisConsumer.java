@@ -29,10 +29,10 @@ import io.github.stream.core.annotation.Sink;
  */
 @Component
 @Sink("test")
-public class SampleConsumer implements Consumer<byte[]> {
+public class RedisConsumer implements Consumer<Object> {
     
     @Override
-    public void accept(List<Message<byte[]>> messages) {
-        messages.forEach(m -> System.out.println("Received rabbitmq message is " + new String(m.getPayload())));
+    public void accept(List<Message<Object>> messages) {
+        messages.forEach(m -> System.out.println("Received mqtt message is " + m.getPayload()));
     }
 }

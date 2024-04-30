@@ -10,14 +10,14 @@ stream:
   # 消息源配置
   source:
     test:
-      # 消息源类型，目前支持：local、mqtt、kafka、rabbitmq
+      # 消息源类型，目前支持：local、mqtt、kafka、rabbitmq、redis、pulsar
       type: local
       # 关联通道
       channel: localQueue
   # 消息目标配置
   sink:
     test:
-      # 消息目标类型，目前支持：default、mqtt、kafka、rabbitmq
+      # 消息目标类型，目前支持：local、mqtt、kafka、rabbitmq、redis、pulsar
       type: default
       # 关联通道
       channel: localQueue
