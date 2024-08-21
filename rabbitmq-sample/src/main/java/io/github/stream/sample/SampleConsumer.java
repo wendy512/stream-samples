@@ -33,6 +33,7 @@ public class SampleConsumer implements Consumer<byte[]> {
     
     @Override
     public void accept(List<Message<byte[]>> messages) {
-        messages.forEach(m -> System.out.println("Received rabbitmq message is " + new String(m.getPayload())));
+        messages.forEach(
+                m -> System.out.printf("[%s] Received rabbitmq message is %s%n", Thread.currentThread().getName(), new String(m.getPayload())));
     }
 }

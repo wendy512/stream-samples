@@ -13,12 +13,13 @@
 
 package io.github.stream.sample;
 
+import java.util.List;
+
+import org.springframework.stereotype.Component;
+
 import io.github.stream.core.Consumer;
 import io.github.stream.core.Message;
 import io.github.stream.core.annotation.Sink;
-import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 /**
  * 测试Consumer
@@ -31,6 +32,7 @@ public class PulsarConsumer implements Consumer<Object> {
     
     @Override
     public void accept(List<Message<Object>> messages) {
-        messages.forEach(m -> System.out.println("Received pulsar message is " + m.getPayload()));
+        messages.forEach(
+                m -> System.out.printf("[%s] Received mqtt message is %s%n", Thread.currentThread().getName(), m.getPayload()));
     }
 }

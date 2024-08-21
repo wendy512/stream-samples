@@ -33,6 +33,7 @@ public class SampleConsumer implements Consumer<Object> {
     
     @Override
     public void accept(List<Message<Object>> messages) {
-        messages.forEach(m -> System.out.println("Received mqtt message is " + m.getPayload()));
+        messages.forEach(
+            m -> System.out.printf("[%s] Received mqtt message is %s%n", Thread.currentThread().getName(), m.getPayload()));
     }
 }

@@ -20,7 +20,7 @@ stream:
       # 关联通道
       channel: sourceQueue
       # 指定实例名称
-      instanceName: redis-client
+      instance: redis-client
       config:
         topic: test/stream-1
     # 接受本地通道的数据，然后发送到MQTT Server
@@ -43,11 +43,11 @@ stream:
       channel: sinkQueue
       threads: 1
       # 指定实例名称
-      instanceName: redis-client
+      instance: redis-client
   # 实例配置
   instance:
     redis-client:
       mode: single
-      address: redis://192.168.6.195:6379
+      address: redis://192.168.6.196:6379
       password: hy123456
       database: 2

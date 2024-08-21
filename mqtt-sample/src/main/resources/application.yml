@@ -20,7 +20,7 @@ stream:
       # 关联通道
       channel: sourceQueue
       # 指定实例名称
-      instanceName: mqtt-client-1
+      instance: mqtt-client-1
       config:
         topic: test/stream-1
         # 为空默认为UUID生成
@@ -38,21 +38,21 @@ stream:
       # 关联通道
       channel: sourceQueue
       # 目标由几个固定线程去处理
-      threads: 1
+      threads: 2
     # 发送处理
     test2:
       type: mqtt
       channel: sinkQueue
       threads: 1
       # 指定实例名称
-      instanceName: mqtt-client-1
+      instance: mqtt-client-1
       config:
         # 为空默认为UUID生成
         clientId: test2
   # 实例配置
   instance:
     mqtt-client-1:
-      host: tcp://192.168.6.195:9883
+      host: tcp://192.168.6.195:1883
       qos: 1
       username: admin
       password: hy123456

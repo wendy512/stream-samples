@@ -22,7 +22,7 @@ stream:
       type: pulsar
       channel: sourceQueue
       # 指定实例名称
-      instanceName: pulsar-client
+      instance: pulsar-client
       # Configure consumer
       config:
         topicNames: ["persistent://public/default/user.consumer.test1"]
@@ -48,7 +48,7 @@ stream:
       channel: sinkQueue
       threads: 1
       # 指定实例名称
-      instanceName: pulsar-client
+      instance: pulsar-client
       # Configure producer
       config:
         topicName: user.consumer.test1

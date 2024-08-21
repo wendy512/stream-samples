@@ -20,7 +20,7 @@ stream:
       # 关联通道
       channel: sourceQueue
       # 指定实例名称
-      instanceName: rabbitmq-client
+      instance: rabbitmq-client
       # 配置MQTT
       config:
         # exchange与queue进行绑定
@@ -44,14 +44,14 @@ stream:
       # 关联通道
       channel: sourceQueue
       # 目标由几个固定线程去处理
-      threads: 1
+      threads: 2
     # 发送处理
     test2:
       type: rabbitmq
       channel: sinkQueue
       threads: 1
       # 指定实例名称
-      instanceName: rabbitmq-client
+      instance: rabbitmq-client
   # 客户端实例配置
   instance:
     rabbitmq-client:
