@@ -19,11 +19,11 @@
     </modules>
     
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <revision>1.0.3</revision>
-        <java.version>1.8</java.version>
+        <java.version>17</java.version>
         <source.java.version>1.8</source.java.version>
         <target.java.version>1.8</target.java.version>
         <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
@@ -45,7 +45,7 @@
         <dependencies>
             <dependency>
                 <groupId>io.github.wendy512</groupId>
-                <artifactId>stream-bom</artifactId>
+                <artifactId>stream-bom-springboot3</artifactId>
                 <version>${revision}</version>
                 <type>pom</type>
                 <scope>import</scope>
