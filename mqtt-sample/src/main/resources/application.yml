@@ -38,7 +38,7 @@ stream:
       # 关联通道
       channel: sourceQueue
       # 目标由几个固定线程去处理
-      threads: 2
+      threads: 1
     # 发送处理
     test2:
       type: mqtt
@@ -70,5 +70,3 @@ stream:
         #keyStoreType: JKS
         # 密钥密码
         #keyStorePassword: password
-
-

@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>io.github.wendy512</groupId>
-            <artifactId>stream-rabbitmq</artifactId>
+            <artifactId>stream-rabbitmq-springboot3</artifactId>
         </dependency>
     </dependencies>
 

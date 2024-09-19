@@ -19,7 +19,7 @@
     <dependencies>
         <dependency>
             <groupId>io.github.wendy512</groupId>
-            <artifactId>stream-pulsar</artifactId>
+            <artifactId>stream-pulsar-springboot3</artifactId>
         </dependency>
     </dependencies>
 </project>
