@@ -6,12 +6,12 @@ stream:
       # 通道类型，目前支持：memory
       type: memory
       # 队列容量
-      capacity: 20000
+      capacity: 1000
     # 发送通道
     sinkQueue:
       type: memory
       # 队列容量
-      capacity: 20000
+      capacity: 1000
   # 消息源配置
   source:
     test:
@@ -52,10 +52,8 @@ stream:
   # 实例配置
   instance:
     mqtt-client-1:
-      host: tcp://192.168.6.195:1883
+      host: tcp://localhost:1883
       qos: 1
-      username: admin
-      password: hy123456
       autoReconnect: true
       cleanSession: true
       keepAlive: 60

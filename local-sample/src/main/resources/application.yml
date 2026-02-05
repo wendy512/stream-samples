@@ -6,7 +6,7 @@ stream:
       # 通道类型，目前支持：memory
       type: memory
       # 队列容量
-      capacity: 20000
+      capacity: 1000
   # 消息源配置
   source:
     test:
@@ -22,4 +22,4 @@ stream:
       # 关联通道
       channel: localQueue
       # 目标由几个固定线程去处理
-      threads: 1
+      threads: 3
