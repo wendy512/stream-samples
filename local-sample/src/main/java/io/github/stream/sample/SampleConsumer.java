@@ -13,12 +13,16 @@
 
 package io.github.stream.sample;
 
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.util.StopWatch;
+
 import io.github.stream.core.Consumer;
 import io.github.stream.core.Message;
 import io.github.stream.core.annotation.Sink;
-import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 /**
  * 测试Consumer
@@ -29,9 +33,25 @@ import java.util.List;
 @Component
 @Sink("test")
 public class SampleConsumer implements Consumer<Object> {
+    private static final String EVENT_10000 = "Event-10000";
+
+    @Autowired
+    private StopWatch stopWatch;
+
+    private final AtomicInteger counter = new AtomicInteger(0);
     
     @Override
     public void accept(List<Message<Object>> messages) {
-        messages.forEach(m -> System.out.println("Received local message is " + m.getPayload()));
+        System.out.println("[" + Thread.currentThread().getName() +"] Received " + messages.size() + " messages.");
+        messages.forEach(m -> {
+            System.out.println("[" + Thread.currentThread().getName() +"] Processing event: " + m.getPayload());
+            if (EVENT_10000.equals(m.getPayload())) {
+                stopWatch.stop();
+                System.out.println(stopWatch);
+            }
+            counter.incrementAndGet();
+        });
+
+        System.out.println("[" + Thread.currentThread().getName() +"] Total received messages: " + counter.intValue());
     }
 }

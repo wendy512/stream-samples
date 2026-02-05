@@ -13,13 +13,16 @@
 
 package io.github.stream.sample;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.stereotype.Component;
+import org.springframework.util.StopWatch;
+
 import io.github.stream.core.Message;
 import io.github.stream.core.annotation.Channel;
 import io.github.stream.core.channel.ChannelProcessor;
 import io.github.stream.core.message.MessageBuilder;
-import org.springframework.context.ApplicationListener;
-import org.springframework.context.event.ContextRefreshedEvent;
-import org.springframework.stereotype.Component;
 
 /**
  * 消息推送
@@ -33,11 +36,14 @@ public class SamplePusher implements ApplicationListener<ContextRefreshedEvent> 
     // 指定哪个通道
     @Channel("localQueue")
     private ChannelProcessor channelProcessor;
+
+    @Autowired
+    private StopWatch stopWatch;
     
     public void push(int count) {
-        for (int i = 0; i < count; i++) {
+        for (int i = 1; i <= count; i++) {
             // 组装消息
-            String payload = "Here is a sample message, the current index is " + i;
+            String payload = "Event-" + i;
             Message message = MessageBuilder.withPayload(payload).build();
             channelProcessor.send(message);
         }
@@ -45,6 +51,7 @@ public class SamplePusher implements ApplicationListener<ContextRefreshedEvent> 
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-        push(100);
+        stopWatch.start();
+        push(10000);
     }
 }
